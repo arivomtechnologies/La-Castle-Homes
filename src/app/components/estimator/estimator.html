@@ -1,0 +1,103 @@
+<div class="estimator-card">
+  <div class="estimator-header">
+    <div class="label">INTERACTIVE BUDGET ESTIMATOR</div>
+    <h3 class="estimator-title">Project Investment <em>Calculator</em></h3>
+    <p class="estimator-subtitle">Select your project type, planned square footage, and luxury specification tier to receive an instant ballpark estimate.</p>
+  </div>
+
+  <div class="estimator-body">
+    <!-- Step 1: Project Type -->
+    <div class="calc-section">
+      <label class="calc-label">1. SELECT PROJECT CLASSIFICATION</label>
+      <div class="pill-group">
+        <button 
+          type="button" 
+          class="pill-btn" 
+          [class.active]="projectType() === 'residential'"
+          (click)="projectType.set('residential')">
+          Residential Villa
+        </button>
+        <button 
+          type="button" 
+          class="pill-btn" 
+          [class.active]="projectType() === 'commercial'"
+          (click)="projectType.set('commercial')">
+          Commercial Complex
+        </button>
+        <button 
+          type="button" 
+          class="pill-btn" 
+          [class.active]="projectType() === 'renovation'"
+          (click)="projectType.set('renovation')">
+          Luxury Remodeling
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Area Slider -->
+    <div class="calc-section">
+      <div class="area-header">
+        <label class="calc-label">2. BUILT-UP AREA (SQ. FT.)</label>
+        <span class="area-value">{{ areaSqFt().toLocaleString('en-IN') }} sq ft</span>
+      </div>
+      <input 
+        type="range" 
+        min="1500" 
+        max="30000" 
+        step="500" 
+        [value]="areaSqFt()" 
+        (input)="onAreaChange($event)"
+        class="luxury-slider" 
+      />
+      <div class="slider-marks">
+        <span>1,500 sq ft</span>
+        <span>15,000 sq ft</span>
+        <span>30,000 sq ft</span>
+      </div>
+    </div>
+
+    <!-- Step 3: Tier -->
+    <div class="calc-section">
+      <label class="calc-label">3. SPECIFICATION &amp; FINISH TIER</label>
+      <div class="tier-grid">
+        <div 
+          class="tier-box" 
+          [class.active]="tier() === 'premium'"
+          (click)="tier.set('premium')">
+          <div class="tier-name">Premium Luxury</div>
+          <div class="tier-rate">~ ₹3,400 / sq ft</div>
+          <p>Granite &amp; vitrified surfaces, premium CP fittings, seismic RCC frame.</p>
+        </div>
+        <div 
+          class="tier-box" 
+          [class.active]="tier() === 'ultra'"
+          (click)="tier.set('ultra')">
+          <span class="popular-tag">MOST POPULAR</span>
+          <div class="tier-name">Ultra Luxury</div>
+          <div class="tier-rate">~ ₹4,900 / sq ft</div>
+          <p>Italian marble, high-span cantilever glass, acoustic insulation, smart home automation.</p>
+        </div>
+        <div 
+          class="tier-box" 
+          [class.active]="tier() === 'bespoke'"
+          (click)="tier.set('bespoke')">
+          <div class="tier-name">Bespoke Iconic</div>
+          <div class="tier-rate">~ ₹6,800 / sq ft</div>
+          <p>Imported stonework, custom double-height glazing, infinity water body, architectural masterpiece.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Display -->
+    <div class="calc-result-box">
+      <div class="result-details">
+        <span class="result-label">ESTIMATED TURNKEY INVESTMENT:</span>
+        <div class="result-number">{{ formattedCost() }}</div>
+        <span class="result-disclaimer">*Preliminary estimate. Includes civil structure, architectural MEP, and standard luxury finishes. Excludes land acquisition & statutory liaison taxes.</span>
+      </div>
+      <button type="button" class="btn-gold" (click)="proceedWithEstimate()">
+        CONSULT AN ARCHITECT &nbsp;→
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,150 @@
+.services-detail-section {
+  padding: 8rem 0;
+  background: var(--dark);
+}
+
+.svc-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5.5rem;
+  align-items: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.svc-row:first-child {
+  padding-top: 0;
+}
+
+.svc-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.svc-row.reverse {
+  direction: rtl;
+}
+
+.svc-row.reverse .svc-col-text {
+  direction: ltr;
+}
+
+.svc-image-frame {
+  position: relative;
+}
+
+.svc-photo {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.6s ease;
+}
+
+.svc-image-frame:hover .svc-photo {
+  transform: scale(1.02);
+}
+
+.svc-accent-border {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: -15px;
+  bottom: -15px;
+  border: 1px solid var(--gold-border);
+  z-index: -1;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+}
+
+.svc-image-frame:hover .svc-accent-border {
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: -20px;
+  border-color: var(--gold);
+}
+
+.svc-tag-detail {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.svc-title-detail {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.svc-lead {
+  font-size: 1.05rem;
+  color: var(--off-white);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.svc-desc {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+.deliverables-box {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-border);
+  padding: 1.8rem 2rem;
+  border-radius: 4px;
+  margin-bottom: 2.2rem;
+}
+
+.deliverables-box h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.deliverables-box ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.deliverables-box li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.check-icon {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 991px) {
+  .svc-row {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding: 3.5rem 0;
+  }
+  .svc-row.reverse {
+    direction: ltr;
+  }
+  .svc-photo {
+    height: 380px;
+  }
+}

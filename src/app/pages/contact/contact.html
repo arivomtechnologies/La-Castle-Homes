@@ -1,0 +1,188 @@
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('images/hero-bg.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="label">GET IN TOUCH</div>
+    <h1 class="page-title">Start Your <em>Project</em></h1>
+    <p class="page-subtitle">Tell us about your architectural vision. Our senior engineers and architects will bring it to life.</p>
+  </div>
+</section>
+
+<!-- ══ CONTACT SECTION ══ -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Form Column -->
+      <div class="contact-form-card">
+        @if (isSuccess()) {
+          <div class="success-box">
+            <div class="success-icon">✓</div>
+            <h3>Thank You for Reaching Out</h3>
+            <p>Your project enquiry has been successfully transmitted to our executive engineering desk. A senior representative will review your requirements and respond within one business day.</p>
+            <div class="next-steps-list">
+              <div class="step-item">
+                <strong>1. Comprehensive Review</strong>
+                <span>Our structural and architectural leads assess your project scope.</span>
+              </div>
+              <div class="step-item">
+                <strong>2. Discovery Consultation</strong>
+                <span>A 45-minute discovery call to align on design, site topography, and budget.</span>
+              </div>
+              <div class="step-item">
+                <strong>3. Itemized Concept Proposal</strong>
+                <span>Detailed timeline, architectural vision draft, and cost estimate.</span>
+              </div>
+            </div>
+            <button class="btn-gold" (click)="resetForm()">SUBMIT ANOTHER ENQUIRY</button>
+          </div>
+        } @else {
+          <div class="label">SEND A MESSAGE</div>
+          <h2 class="form-title">Let's Discuss Your <em>Vision</em></h2>
+          <p class="form-desc">Complete the form below and our leadership team will connect with you promptly.</p>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="luxury-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" formControlName="firstName" placeholder="e.g. Vikram" />
+                @if (contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched) {
+                  <span class="field-error">Please enter your first name.</span>
+                }
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" formControlName="lastName" placeholder="e.g. Menon" />
+                @if (contactForm.get('lastName')?.invalid && contactForm.get('lastName')?.touched) {
+                  <span class="field-error">Please enter your last name.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" formControlName="email" placeholder="e.g. vikram@domain.com" />
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  <span class="field-error">Please enter a valid email address.</span>
+                }
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" formControlName="phone" placeholder="+91 98765 43210" />
+                @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
+                  <span class="field-error">Please enter a valid phone number.</span>
+                }
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="service">Project Type *</label>
+                <select id="service" formControlName="service">
+                  <option value="" disabled selected>Select a project type…</option>
+                  <option value="Residential Construction">Residential Construction</option>
+                  <option value="Commercial Construction">Commercial Construction</option>
+                  <option value="Design & Build">Design &amp; Build</option>
+                  <option value="Project Management">Project Management</option>
+                  <option value="Renovation & Remodeling">Renovation &amp; Remodeling</option>
+                  <option value="Other">Other Bespoke Enquiry</option>
+                </select>
+                @if (contactForm.get('service')?.invalid && contactForm.get('service')?.touched) {
+                  <span class="field-error">Please select a project type.</span>
+                }
+              </div>
+
+              <div class="form-group">
+                <label for="budget">Estimated Budget</label>
+                <select id="budget" formControlName="budget">
+                  <option value="" disabled selected>Select budget range…</option>
+                  <option value="Under ₹50 Lakhs">Under ₹50 Lakhs</option>
+                  <option value="₹50 Lakhs – ₹1 Cr">₹50 Lakhs – ₹1 Cr</option>
+                  <option value="₹1 Cr – ₹5 Cr">₹1 Cr – ₹5 Cr</option>
+                  <option value="₹5 Cr – ₹10 Cr">₹5 Cr – ₹10 Cr</option>
+                  <option value="₹10 Cr+">₹10 Cr+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Project Description *</label>
+              <textarea id="message" rows="5" formControlName="message" placeholder="Provide details about your plot location, desired square footage, architectural preferences, and target timeline…"></textarea>
+              @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                <span class="field-error">Please provide a brief message (minimum 10 characters).</span>
+              }
+            </div>
+
+            <button type="submit" class="btn-gold submit-btn" [disabled]="isSubmitting()">
+              @if (isSubmitting()) {
+                <span>TRANSMITTING ENQUIRY…</span>
+              } @else {
+                <span>SUBMIT PROJECT ENQUIRY &nbsp;→</span>
+              }
+            </button>
+          </form>
+        }
+      </div>
+
+      <!-- Info Column -->
+      <div class="contact-info-card">
+        <div class="label">CONTACT DETAILS</div>
+        <h3 class="info-title">Headquarters &amp; Direct Desk</h3>
+        <p class="info-desc">Feel free to visit our design studio or reach our leadership team directly via phone or WhatsApp.</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Design Studio &amp; Office</strong>
+              <p>
+                <a href="https://maps.google.com/?q=Choolaimedu,+Chennai,+Tamil+Nadu" target="_blank" rel="noopener noreferrer">
+                  Choolaimedu, Chennai, Tamil Nadu 600094, India &nbsp;↗
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Direct Phone Line</strong>
+              <p><a href="tel:+919551116009">+91 95511 16009</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <div>
+              <strong>Official Email</strong>
+              <p><a href="mailto:lacastlehomes@gmail.com">lacastlehomes&#64;gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">💬</span>
+            <div>
+              <strong>Instant WhatsApp</strong>
+              <p><a href="https://wa.me/919551116009" target="_blank" rel="noopener noreferrer">Chat directly with an Engineer</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="working-hours-card">
+          <h4>Studio Working Hours</h4>
+          <div class="hours-row">
+            <span>Monday – Saturday:</span>
+            <strong>9:00 AM – 7:30 PM</strong>
+          </div>
+          <div class="hours-row">
+            <span>Sunday:</span>
+            <strong>By Prior Appointment Only</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

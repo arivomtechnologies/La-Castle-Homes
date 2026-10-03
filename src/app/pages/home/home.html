@@ -1,0 +1,220 @@
+<!-- ══ HERO ══ -->
+<section id="hero" class="hero-section">
+  <div class="hero-bg" style="background-image: url('images/hero-bg.jpg');"></div>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-side-text hide-mobile">
+    <div class="side-line"></div>
+    <span class="vertical-text">CHENNAI · TAMIL NADU · EST. 2020</span>
+    <div class="side-line"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-label">
+      <span class="label-line"></span>
+      SINCE 2020 · PREMIUM CONSTRUCTION & ARCHITECTURE
+    </div>
+    <h1 class="hero-title">
+      Building the<br>Future of<br>
+      <em>Luxury.</em>
+    </h1>
+    <p class="hero-desc">
+      La Castle Homes delivers uncompromising craftsmanship for high-end residential and commercial projects in Tamil Nadu, India.
+    </p>
+    <div class="hero-btns">
+      <a routerLink="/contact" class="btn-gold">START YOUR PROJECT</a>
+      <a routerLink="/projects" class="btn-outline">EXPLORE OUR WORK</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint" (click)="scrollToStats()" role="button" tabindex="0" (keydown.enter)="scrollToStats()" aria-label="Scroll to overview">
+    <div class="scroll-line"></div>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2">
+      <path d="m6 9 6 6 6-6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ STATS COUNTER ══ -->
+<section id="stats-overview" class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      @for (stat of stats(); track stat.label) {
+        <div class="stat-item">
+          <div class="stat-number">
+            <span>{{ stat.current }}{{ stat.suffix }}</span>
+          </div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT INTRO ══ -->
+<section class="about-intro-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="images/studio-team.jpg" alt="La Castle Homes Architectural Studio" class="about-img" />
+        <div class="gold-corner"></div>
+        <div class="experience-badge">
+          <span class="badge-num">5+</span>
+          <span class="badge-txt">Years of Architectural Distinction</span>
+        </div>
+      </div>
+
+      <div class="about-text-wrap">
+        <div class="label">ABOUT LA CASTLE HOMES</div>
+        <h2 class="section-title">Where Vision Meets <em>Precision.</em></h2>
+        <p class="section-desc">
+          Founded in 2020 in Chennai, La Castle Homes stands at the pinnacle of modern architectural design and master construction. We sculpt residences and commercial landmarks that redefine skyline elegance.
+        </p>
+        <p class="section-desc">
+          From turnkey architectural planning to bespoke interior curation, our multidisciplinary team of engineers and master craftsmen deliver seamless execution with total transparency.
+        </p>
+
+        <div class="about-features">
+          <div class="af-item">
+            <span class="af-icon">◈</span>
+            <div>
+              <strong>Bespoke Architectural Design</strong>
+              <p>Custom concepts tailored to your lifestyle and land orientation.</p>
+            </div>
+          </div>
+          <div class="af-item">
+            <span class="af-icon">◈</span>
+            <div>
+              <strong>Rigorous Structural Engineering</strong>
+              <p>Built with highest-grade materials adhering to international benchmarks.</p>
+            </div>
+          </div>
+          <div class="af-item">
+            <span class="af-icon">◈</span>
+            <div>
+              <strong>Turnkey Project Delivery</strong>
+              <p>End-to-end management with real-time milestone reporting.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-action">
+          <a routerLink="/about" class="btn-outline">LEARN MORE ABOUT US &nbsp;→</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CORE SERVICES PREVIEW ══ -->
+<section class="services-preview-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">WHAT WE DELIVER</div>
+      <h2 class="section-title">Comprehensive <em>Expertise</em></h2>
+      <p class="section-desc">End-to-end capabilities spanning initial concept through final structural handover.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-img-holder">
+          <img src="images/residential-1.jpg" alt="Residential Construction" />
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-tag">01 / RESIDENTIAL</span>
+          <h3>Luxury Villas &amp; Estates</h3>
+          <p>Architectural residences engineered for serenity, privacy, and lasting legacy.</p>
+          <a routerLink="/services" class="svc-link">EXPLORE SERVICE →</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="svc-img-holder">
+          <img src="images/commercial-1.jpg" alt="Commercial Construction" />
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-tag">02 / COMMERCIAL</span>
+          <h3>Corporate &amp; Commercial</h3>
+          <p>State-of-the-art office towers, tech parks, and landmark commercial centers.</p>
+          <a routerLink="/services" class="svc-link">EXPLORE SERVICE →</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="svc-img-holder">
+          <img src="images/renovation-1.jpg" alt="Renovation & Remodeling" />
+        </div>
+        <div class="svc-card-body">
+          <span class="svc-tag">03 / RENOVATION</span>
+          <h3>Luxury Remodeling</h3>
+          <p>Transformative interior updates, structural additions, and heritage restorations.</p>
+          <a routerLink="/services" class="svc-link">EXPLORE SERVICE →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-cta-wrap">
+      <a routerLink="/services" class="btn-gold">VIEW ALL 5 CORE SERVICES</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURED PROJECTS ══ -->
+<section class="featured-projects-section">
+  <div class="container">
+    <div class="featured-header">
+      <div>
+        <div class="label">CURATED PORTFOLIO</div>
+        <h2 class="section-title">Featured <em>Landmarks</em></h2>
+      </div>
+      <a routerLink="/projects" class="btn-outline hide-mobile">VIEW ALL PROJECTS →</a>
+    </div>
+
+    <div class="projects-grid">
+      @for (project of featuredProjects; track project.title) {
+        <div class="project-card">
+          <div class="project-img-box">
+            <img [src]="project.image" [alt]="project.title" />
+            <div class="project-overlay">
+              <span class="project-category">{{ project.category }}</span>
+              <h3 class="project-title">{{ project.title }}</h3>
+              <p class="project-specs">{{ project.specs }}</p>
+              <a routerLink="/projects" class="project-arrow">→</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="projects-mobile-btn hide-desktop">
+      <a routerLink="/projects" class="btn-outline">VIEW ALL PROJECTS →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">CLIENT VOICES</div>
+      <h2 class="section-title">Enduring <em>Trust</em></h2>
+      <p class="section-desc">What our esteemed clientele say about their journey with La Castle Homes.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      @for (t of testimonials; track t.author) {
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"{{ t.quote }}"</p>
+          <div class="testi-author-info">
+            <div class="testi-avatar">{{ t.author.charAt(0) }}</div>
+            <div>
+              <strong class="testi-name">{{ t.author }}</strong>
+              <span class="testi-role">{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

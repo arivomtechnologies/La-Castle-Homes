@@ -1,0 +1,101 @@
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('images/hero-bg.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="label">ABOUT LA CASTLE HOMES</div>
+    <h1 class="page-title">Our Story &amp; <em>Mission</em></h1>
+    <p class="page-subtitle">Building legacies since 2020 — one extraordinary architectural project at a time.</p>
+  </div>
+</section>
+
+<!-- ══ STORY ══ -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img-box">
+        <img src="images/studio-team.jpg" alt="La Castle Homes Architects at work" class="story-photo" />
+        <div class="gold-corner-tl"></div>
+        <div class="gold-corner-br"></div>
+      </div>
+
+      <div class="story-text-box">
+        <div class="label">OUR HERITAGE</div>
+        <h2 class="section-title">5 Years of <em>Uncompromising Quality</em></h2>
+        <p class="lead-text">
+          Founded in 2020 by an impassioned team of structural engineers and architects, La Castle Homes began with an unwavering conviction: that every structure built deserves the absolute pinnacle of craftsmanship, materials, and vision.
+        </p>
+        <p class="sub-text">
+          Since our founding in Chennai, we have ascended to become one of Tamil Nadu's most esteemed construction and design practices — having successfully engineered over 25 landmark residential estates and commercial towers.
+        </p>
+        <p class="sub-text">
+          Our foundation is grounded in authentic relationships: with our clients, our master craftsmen, and the communities we enrich. We do not simply build buildings — we sculpt generational legacies.
+        </p>
+
+        <div class="story-stats-grid">
+          <div class="st-box">
+            <span class="st-num">25+</span>
+            <span class="st-lbl">Landmark Projects</span>
+          </div>
+          <div class="st-box">
+            <span class="st-num">5 yrs</span>
+            <span class="st-lbl">Proven Excellence</span>
+          </div>
+          <div class="st-box">
+            <span class="st-num">98%</span>
+            <span class="st-lbl">Client Satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VALUES ══ -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">WHAT DRIVES US</div>
+      <h2 class="section-title">Our Guiding <em>Pillars</em></h2>
+      <p class="section-desc">The non-negotiable principles that steer every blueprint, foundation, and finishing flourish.</p>
+    </div>
+
+    <div class="values-grid">
+      @for (val of values; track val.number) {
+        <div class="value-card">
+          <span class="value-num">{{ val.number }}</span>
+          <h3>{{ val.title }}</h3>
+          <p>{{ val.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ══ TIMELINE ══ -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">THE JOURNEY</div>
+      <h2 class="section-title">Chronicle of <em>Excellence</em></h2>
+      <p class="section-desc">Key milestones that marked our ascent in luxury construction.</p>
+    </div>
+
+    <div class="timeline-wrap">
+      @for (m of milestones; track m.year) {
+        <div class="timeline-row">
+          <div class="tl-year">{{ m.year }}</div>
+          <div class="tl-bullet"></div>
+          <div class="tl-content">
+            <h4>{{ m.title }}</h4>
+            <p>{{ m.desc }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="timeline-cta-wrap">
+      <a routerLink="/contact" class="btn-gold">START YOUR PROJECT WITH US &nbsp;→</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,165 @@
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('images/hero-bg.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="label">CURATED PORTFOLIO</div>
+    <h1 class="page-title">Our Landmark <em>Projects</em></h1>
+    <p class="page-subtitle">A bespoke showcase of architectural mastery, engineering precision, and luxury living environments across Tamil Nadu.</p>
+  </div>
+</section>
+
+<!-- ══ PORTFOLIO INTRO NARRATIVE (ABOUT OUR PROJECTS) ══ -->
+<section class="portfolio-narrative-section">
+  <div class="container">
+    <div class="narrative-grid">
+      <div class="narrative-content">
+        <div class="label">PORTFOLIO PHILOSOPHY &amp; ARCHITECTURAL STANDARDS</div>
+        <h2 class="section-title">Crafting Icons That Stand the <em>Test of Time</em></h2>
+        <p class="lead-para">
+          At La Castle Homes, our curated portfolio represents five years of uncompromising dedication to architectural artistry and structural precision. From expansive cantilevered coastal villas in Besant Nagar to high-tensile corporate towers along Anna Salai, every commission is approached as a singular monument to luxury rather than a repetitive construction project.
+        </p>
+        <p class="body-para">
+          We partner closely with visionary patrons, family offices, and progressive commercial developers to translate bold architectural concepts into enduring concrete and steel reality. Every residence and commercial complex in this portfolio is engineered with zero-deviation fidelity, premium materials, and complete lifecycle durability.
+        </p>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="portfolio-metrics-card">
+        <div class="metric-box">
+          <span class="m-val">25+</span>
+          <span class="m-lbl">Completed Landmarks</span>
+          <p>Delivered on schedule with complete statutory compliance.</p>
+        </div>
+        <div class="metric-box">
+          <span class="m-val">100%</span>
+          <span class="m-lbl">Architectural Fidelity</span>
+          <p>Exact structural realization of approved 3D BIM blueprints.</p>
+        </div>
+        <div class="metric-box">
+          <span class="m-val">₹450+ Cr</span>
+          <span class="m-lbl">Cumulative Portfolio Value</span>
+          <p>High-value residential estates &amp; commercial hubs.</p>
+        </div>
+        <div class="metric-box">
+          <span class="m-val">10 Yrs</span>
+          <span class="m-lbl">Insured Structural Warranty</span>
+          <p>Backed by third-party civil quality certifications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILTER CONTROLS ══ -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-bar">
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedFilter() === 'all'" 
+        (click)="setFilter('all')">
+        All Projects <span class="filter-count">({{ projects.length }})</span>
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedFilter() === 'residential'" 
+        (click)="setFilter('residential')">
+        Residential <span class="filter-count">({{ residentialCount() }})</span>
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedFilter() === 'commercial'" 
+        (click)="setFilter('commercial')">
+        Commercial <span class="filter-count">({{ commercialCount() }})</span>
+      </button>
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedFilter() === 'renovation'" 
+        (click)="setFilter('renovation')">
+        Renovation <span class="filter-count">({{ renovationCount() }})</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS GRID ══ -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="projects-masonry">
+      @for (project of filteredProjects(); track project.id; let i = $index) {
+        <div class="project-tile" [class.tile-wide]="project.featured" (click)="openLightbox(i)">
+          <div class="tile-img-holder">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+            
+            <div class="tile-overlay">
+              <div class="tile-header-tags">
+                <span class="tile-badge">{{ project.categoryLabel }}</span>
+                <span class="tile-year">{{ project.year }}</span>
+              </div>
+
+              <div class="tile-details">
+                <h3 class="tile-title">{{ project.title }}</h3>
+                <p class="tile-location">📍 {{ project.location }}</p>
+                <p class="tile-specs">{{ project.specs }}</p>
+                
+                <div class="tile-highlights-tags">
+                  @for (tag of project.highlights; track tag) {
+                    <span class="h-tag">{{ tag }}</span>
+                  }
+                </div>
+
+                <div class="tile-action">
+                  <span class="view-btn">EXPAND GALLERY &nbsp;⤢</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIGHTBOX MODAL WITH DIRECT ENQUIRY ══ -->
+@if (activeLightboxIndex() !== null) {
+  <div class="lightbox-overlay" (click)="closeLightbox()">
+    <div class="lightbox-dialog" (click)="$event.stopPropagation()">
+      <button class="lb-close" (click)="closeLightbox()" aria-label="Close image preview">✕</button>
+
+      <button class="lb-nav lb-prev" (click)="prevImage()" aria-label="Previous image">‹</button>
+      
+      <div class="lb-image-container">
+        <img [src]="filteredProjects()[activeLightboxIndex()!].image" [alt]="filteredProjects()[activeLightboxIndex()!].title" class="lb-img" />
+      </div>
+
+      <button class="lb-nav lb-next" (click)="nextImage()" aria-label="Next image">›</button>
+
+      <div class="lb-footer">
+        <div class="lb-info">
+          <div class="lb-meta-tag">
+            <span>{{ filteredProjects()[activeLightboxIndex()!].categoryLabel }}</span> · 
+            <span>{{ filteredProjects()[activeLightboxIndex()!].year }}</span> · 
+            <span>{{ filteredProjects()[activeLightboxIndex()!].location }}</span>
+          </div>
+          <h3 class="lb-title">{{ filteredProjects()[activeLightboxIndex()!].title }}</h3>
+          <p class="lb-sub">{{ filteredProjects()[activeLightboxIndex()!].specs }} — <em>{{ filteredProjects()[activeLightboxIndex()!].style }}</em></p>
+          <div class="lb-pills">
+            @for (h of filteredProjects()[activeLightboxIndex()!].highlights; track h) {
+              <span class="lb-pill">✓ {{ h }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="lb-actions">
+          <div class="lb-counter">
+            {{ activeLightboxIndex()! + 1 }} / {{ filteredProjects().length }}
+          </div>
+          <a routerLink="/contact" class="btn-gold lb-enquire-btn" (click)="closeLightbox()">
+            ENQUIRE ABOUT THIS BUILD &nbsp;→
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

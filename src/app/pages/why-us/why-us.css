@@ -1,0 +1,225 @@
+/* ── Differentiators Section ── */
+.differentiators-section {
+  padding: 8rem 0;
+  background: var(--dark);
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.diff-card {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-border);
+  padding: 3rem 2.2rem;
+  border-radius: 4px;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.diff-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-border);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+}
+
+.diff-icon-box {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.diff-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+}
+
+.diff-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+/* ── Comparison Section ── */
+.comparison-section {
+  padding: 8rem 0;
+  background: var(--dark-2);
+  border-top: 1px solid var(--dark-border);
+}
+
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--dark-border);
+  border-radius: 4px;
+  background: var(--dark);
+}
+
+.luxury-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.luxury-table th {
+  padding: 1.5rem 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--dark-border-2);
+  background: var(--black);
+}
+
+.luxury-table td {
+  padding: 1.5rem 2rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--dark-border);
+}
+
+.feature-name {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.highlight-col {
+  background: rgba(201, 168, 76, 0.04);
+}
+
+.luxury-table th.highlight-col {
+  color: var(--gold);
+  border-bottom-color: var(--gold-border);
+  background: rgba(201, 168, 76, 0.08);
+}
+
+.lacastle-cell {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.gold-check {
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.others-cell {
+  color: var(--text-dim);
+}
+
+.cross-icon {
+  color: #a84c4c;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.table-cta-wrap {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* ── FAQ Section ── */
+.faq-section {
+  padding: 8rem 0 10rem;
+  background: var(--dark);
+  border-top: 1px solid var(--dark-border);
+}
+
+.faq-accordion {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.faq-item {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item:hover,
+.faq-item.open {
+  border-color: var(--gold-border);
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  padding: 1.8rem 2.2rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: color var(--transition);
+  gap: 1.5rem;
+}
+
+.faq-question-btn:hover {
+  color: var(--gold);
+}
+
+.faq-toggle-icon {
+  font-family: monospace;
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.faq-answer-panel {
+  padding: 0 2.2rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.faq-answer-panel p {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.faq-footer-cta {
+  text-align: center;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.faq-footer-cta p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 991px) {
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq-question-btn {
+    font-size: 1rem;
+    padding: 1.4rem 1.6rem;
+  }
+  .faq-answer-panel {
+    padding: 1.2rem 1.6rem 1.6rem;
+  }
+}

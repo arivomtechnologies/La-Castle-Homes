@@ -1,0 +1,46 @@
+<header id="site-header" [class.scrolled]="isScrolled()">
+  <div class="container">
+    <nav class="nav-inner">
+      <!-- Logo (Preserved as requested) -->
+      <a routerLink="/" class="logo" (click)="closeMenu()">
+        <img src="lacastlelogo.png" alt="La Castle Homes" class="logo-img" />
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links hide-mobile">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" class="nav-link">About</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" class="nav-link">Services</a></li>
+        <li><a routerLink="/projects" routerLinkActive="active" class="nav-link">Projects</a></li>
+        <li><a routerLink="/why-us" routerLinkActive="active" class="nav-link">Why Us</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- CTA -->
+      <a routerLink="/contact" class="btn-gold hide-mobile nav-cta">GET A QUOTE</a>
+
+      <!-- Hamburger -->
+      <button 
+        id="hamburger" 
+        class="hamburger hide-desktop" 
+        [class.open]="isMenuOpen()" 
+        (click)="toggleMenu()"
+        aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="mobile-menu" [class.open]="isMenuOpen()">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" class="nav-link" (click)="closeMenu()">About</a></li>
+      <li><a routerLink="/services" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Services</a></li>
+      <li><a routerLink="/projects" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Projects</a></li>
+      <li><a routerLink="/why-us" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Why Us</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Contact</a></li>
+      <li><a routerLink="/contact" class="btn-gold mobile-cta-btn" (click)="closeMenu()">GET A QUOTE</a></li>
+    </ul>
+  </div>
+</header>

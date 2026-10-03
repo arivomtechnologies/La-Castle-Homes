@@ -1,0 +1,108 @@
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('images/hero-bg.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <div class="label">THE LA CASTLE STANDARD</div>
+    <h1 class="page-title">Why Choose <em>La Castle</em></h1>
+    <p class="page-subtitle">A paradigm shift in construction: uncompromised architectural luxury, engineering transparency, and guaranteed delivery.</p>
+  </div>
+</section>
+
+<!-- ══ PILLARS / DIFFERENTIATORS ══ -->
+<section class="differentiators-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">THE DIFFERENCE</div>
+      <h2 class="section-title">Built on <em>Accountability</em></h2>
+      <p class="section-desc">Six fundamental commitments that define why clients entrust us with multi-crore residences and towers.</p>
+    </div>
+
+    <div class="diff-grid">
+      @for (item of differentiators; track item.title) {
+        <div class="diff-card">
+          <div class="diff-icon-box">{{ item.icon }}</div>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARISON TABLE ══ -->
+<section class="comparison-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">BENCHMARK COMPARISON</div>
+      <h2 class="section-title">The La Castle <em>Advantage</em></h2>
+      <p class="section-desc">How our execution protocol sets a new gold standard versus conventional contractors.</p>
+    </div>
+
+    <div class="table-container">
+      <table class="luxury-table">
+        <thead>
+          <tr>
+            <th>BENCHMARK CRITERIA</th>
+            <th class="highlight-col">LA CASTLE HOMES</th>
+            <th>CONVENTIONAL BUILDERS</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (c of comparisons; track c.feature) {
+            <tr>
+              <td class="feature-name">{{ c.feature }}</td>
+              <td class="highlight-col lacastle-cell">
+                <span class="gold-check">✔</span> {{ c.lacastle }}
+              </td>
+              <td class="others-cell">
+                <span class="cross-icon">✕</span> {{ c.others }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-cta-wrap">
+      <a routerLink="/contact" class="btn-gold">SCHEDULE A CONSULTATION &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTERACTIVE FAQ ACCORDION ══ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header-center">
+      <div class="label label-center">FREQUENTLY ASKED QUESTIONS</div>
+      <h2 class="section-title">Answers to Your <em>Enquiries</em></h2>
+      <p class="section-desc">Key questions discerning homeowners and investors ask before commissioning La Castle Homes.</p>
+    </div>
+
+    <div class="faq-accordion">
+      @for (faq of faqs; track faq.question; let i = $index) {
+        <div class="faq-item" [class.open]="openFaqIndex() === i">
+          <button 
+            type="button" 
+            class="faq-question-btn" 
+            (click)="toggleFaq(i)"
+            [attr.aria-expanded]="openFaqIndex() === i">
+            <span class="faq-q-text">{{ faq.question }}</span>
+            <span class="faq-toggle-icon">{{ openFaqIndex() === i ? '−' : '+' }}</span>
+          </button>
+          
+          @if (openFaqIndex() === i) {
+            <div class="faq-answer-panel">
+              <p>{{ faq.answer }}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="faq-footer-cta">
+      <p>Have an architectural question not answered here?</p>
+      <a routerLink="/contact" class="btn-outline">TALK DIRECTLY WITH AN ARCHITECT &nbsp;→</a>
+    </div>
+  </div>
+</section>

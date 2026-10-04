@@ -13,21 +13,21 @@
 <section class="services-detail-section">
   <div class="container">
     @for (svc of services; track svc.id; let odd = $odd) {
-      <div class="svc-row" [class.reverse]="odd" [id]="svc.id">
-        <div class="svc-col-img">
-          <div class="svc-image-frame">
-            <img [src]="svc.image" [alt]="svc.title" class="svc-photo" />
+      <div class="svc-row reveal" [class.reverse]="odd" [id]="svc.id">
+        <div class="svc-col-img" [attr.data-reveal]="odd ? 'right' : 'left'">
+          <div class="svc-image-frame img-reveal-wrap">
+            <img [src]="svc.image" [alt]="svc.title" class="svc-photo img-animated" />
             <div class="svc-accent-border"></div>
           </div>
         </div>
 
-        <div class="svc-col-text">
+        <div class="svc-col-text" [attr.data-reveal]="odd ? 'left' : 'right'">
           <span class="svc-tag-detail">{{ svc.tag }}</span>
           <h2 class="svc-title-detail">{{ svc.title }}</h2>
           <p class="svc-lead">{{ svc.subtitle }}</p>
           <p class="svc-desc">{{ svc.description }}</p>
 
-          <div class="deliverables-box">
+          <div class="deliverables-box reveal delay-1">
             <h4>Key Capabilities &amp; Inclusions:</h4>
             <ul>
               @for (item of svc.deliverables; track item) {
@@ -39,7 +39,7 @@
             </ul>
           </div>
 
-          <div class="svc-cta-box">
+          <div class="svc-cta-box reveal delay-2">
             <a routerLink="/contact" class="btn-gold">ENQUIRE ABOUT THIS SERVICE &nbsp;→</a>
           </div>
         </div>

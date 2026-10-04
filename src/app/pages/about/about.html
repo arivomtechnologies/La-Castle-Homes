@@ -13,13 +13,13 @@
 <section class="story-section">
   <div class="container">
     <div class="story-grid">
-      <div class="story-img-box">
-        <img src="images/studio-team.jpg" alt="La Castle Homes Architects at work" class="story-photo" />
+      <div class="story-img-box img-reveal-wrap" data-reveal="left">
+        <img src="images/studio-team.jpg" alt="La Castle Homes Architects at work" class="story-photo img-animated" />
         <div class="gold-corner-tl"></div>
         <div class="gold-corner-br"></div>
       </div>
 
-      <div class="story-text-box">
+      <div class="story-text-box" data-reveal="right">
         <div class="label">OUR HERITAGE</div>
         <h2 class="section-title">5 Years of <em>Uncompromising Quality</em></h2>
         <p class="lead-text">
@@ -32,7 +32,7 @@
           Our foundation is grounded in authentic relationships: with our clients, our master craftsmen, and the communities we enrich. We do not simply build buildings — we sculpt generational legacies.
         </p>
 
-        <div class="story-stats-grid">
+        <div class="story-stats-grid reveal delay-2">
           <div class="st-box">
             <span class="st-num">25+</span>
             <span class="st-lbl">Landmark Projects</span>
@@ -54,15 +54,15 @@
 <!-- ══ VALUES ══ -->
 <section class="values-section">
   <div class="container">
-    <div class="section-header-center">
+    <div class="section-header-center reveal">
       <div class="label label-center">WHAT DRIVES US</div>
       <h2 class="section-title">Our Guiding <em>Pillars</em></h2>
       <p class="section-desc">The non-negotiable principles that steer every blueprint, foundation, and finishing flourish.</p>
     </div>
 
     <div class="values-grid">
-      @for (val of values; track val.number) {
-        <div class="value-card">
+      @for (val of values; track val.number; let i = $index) {
+        <div class="value-card reveal" [class.delay-1]="i === 0" [class.delay-2]="i === 1" [class.delay-3]="i === 2" [class.delay-4]="i === 3">
           <span class="value-num">{{ val.number }}</span>
           <h3>{{ val.title }}</h3>
           <p>{{ val.desc }}</p>
@@ -75,15 +75,15 @@
 <!-- ══ TIMELINE ══ -->
 <section class="timeline-section">
   <div class="container">
-    <div class="section-header-center">
+    <div class="section-header-center reveal">
       <div class="label label-center">THE JOURNEY</div>
       <h2 class="section-title">Chronicle of <em>Excellence</em></h2>
       <p class="section-desc">Key milestones that marked our ascent in luxury construction.</p>
     </div>
 
     <div class="timeline-wrap">
-      @for (m of milestones; track m.year) {
-        <div class="timeline-row">
+      @for (m of milestones; track m.year; let i = $index) {
+        <div class="timeline-row reveal" [class.delay-1]="i === 0" [class.delay-2]="i === 1" [class.delay-3]="i === 2" [class.delay-4]="i === 3">
           <div class="tl-year">{{ m.year }}</div>
           <div class="tl-bullet"></div>
           <div class="tl-content">
@@ -94,7 +94,7 @@
       }
     </div>
 
-    <div class="timeline-cta-wrap">
+    <div class="timeline-cta-wrap reveal delay-2">
       <a routerLink="/contact" class="btn-gold">START YOUR PROJECT WITH US &nbsp;→</a>
     </div>
   </div>

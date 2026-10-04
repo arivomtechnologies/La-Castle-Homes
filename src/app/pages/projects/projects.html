@@ -13,7 +13,7 @@
 <section class="portfolio-narrative-section">
   <div class="container">
     <div class="narrative-grid">
-      <div class="narrative-content">
+      <div class="narrative-content" data-reveal="left">
         <div class="label">PORTFOLIO PHILOSOPHY &amp; ARCHITECTURAL STANDARDS</div>
         <h2 class="section-title">Crafting Icons That Stand the <em>Test of Time</em></h2>
         <p class="lead-para">
@@ -25,23 +25,23 @@
       </div>
 
       <!-- Quick Metrics Strip -->
-      <div class="portfolio-metrics-card">
-        <div class="metric-box">
+      <div class="portfolio-metrics-card" data-reveal="scale">
+        <div class="metric-box reveal delay-1">
           <span class="m-val">25+</span>
           <span class="m-lbl">Completed Landmarks</span>
           <p>Delivered on schedule with complete statutory compliance.</p>
         </div>
-        <div class="metric-box">
+        <div class="metric-box reveal delay-2">
           <span class="m-val">100%</span>
           <span class="m-lbl">Architectural Fidelity</span>
           <p>Exact structural realization of approved 3D BIM blueprints.</p>
         </div>
-        <div class="metric-box">
+        <div class="metric-box reveal delay-3">
           <span class="m-val">₹450+ Cr</span>
           <span class="m-lbl">Cumulative Portfolio Value</span>
           <p>High-value residential estates &amp; commercial hubs.</p>
         </div>
-        <div class="metric-box">
+        <div class="metric-box reveal delay-4">
           <span class="m-val">10 Yrs</span>
           <span class="m-lbl">Insured Structural Warranty</span>
           <p>Backed by third-party civil quality certifications.</p>
@@ -52,7 +52,7 @@
 </section>
 
 <!-- ══ FILTER CONTROLS ══ -->
-<section class="filter-section">
+<section class="filter-section reveal">
   <div class="container">
     <div class="filter-bar">
       <button 
@@ -88,9 +88,9 @@
   <div class="container">
     <div class="projects-masonry">
       @for (project of filteredProjects(); track project.id; let i = $index) {
-        <div class="project-tile" [class.tile-wide]="project.featured" (click)="openLightbox(i)">
-          <div class="tile-img-holder">
-            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+        <div class="project-tile reveal" [class.tile-wide]="project.featured" (click)="openLightbox(i)">
+          <div class="tile-img-holder img-reveal-wrap">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" class="img-animated" />
             
             <div class="tile-overlay">
               <div class="tile-header-tags">

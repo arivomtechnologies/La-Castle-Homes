@@ -250,19 +250,183 @@ ul, ol {
   to { transform: scale(1); }
 }
 
-/* ── Scroll Reveal Utility ── */
-.reveal {
+/* ============================================================
+   SCROLL REVEAL & IMAGE ANIMATION SYSTEM
+   ============================================================ */
+
+/* ── Base Scroll Reveal Element ── */
+.reveal,
+[data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.reveal.visible {
+.reveal.visible,
+[data-reveal].visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.delay-1 { transition-delay: 0.15s; }
-.delay-2 { transition-delay: 0.3s; }
-.delay-3 { transition-delay: 0.45s; }
-.delay-4 { transition-delay: 0.6s; }
+/* Horizontal slide reveal variants */
+.reveal-left,
+[data-reveal="left"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.visible,
+[data-reveal="left"].visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right,
+[data-reveal="right"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.visible,
+[data-reveal="right"].visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Zoom/Scale reveal for cards and image holders */
+.reveal-scale,
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: scale(0.92) translateY(20px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-scale.visible,
+[data-reveal="scale"].visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Stagger Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.32s; }
+.delay-4 { transition-delay: 0.45s; }
+.delay-5 { transition-delay: 0.6s; }
+
+/* ── Image Reveal Animation & Luxury Polish ── */
+.img-reveal-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.img-reveal-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.18) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: left 0.9s ease;
+  z-index: 3;
+}
+
+.img-reveal-wrap:hover::after {
+  left: 180%;
+}
+
+.img-animated {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: brightness(0.9);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s ease;
+  will-change: opacity, transform, filter;
+}
+
+.img-animated.visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+.img-animated:hover {
+  transform: scale(1.04);
+}
+
+/* ── Modern CSS Scroll-Driven Animation (Baseline Enhancement) ── */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes scrollFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scrollImgZoom {
+      from {
+        opacity: 0.3;
+        transform: scale(1.09);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .scroll-driven-reveal {
+      animation: scrollFadeUp auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+
+    .scroll-driven-img {
+      animation: scrollImgZoom auto cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 35%;
+    }
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  [data-reveal],
+  .img-animated {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .page-hero-bg,
+  .hero-bg {
+    animation: none !important;
+  }
+}

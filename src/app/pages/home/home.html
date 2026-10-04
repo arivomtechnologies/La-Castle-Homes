@@ -55,16 +55,16 @@
 <section class="about-intro-section">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap">
-        <img src="images/studio-team.jpg" alt="La Castle Homes Architectural Studio" class="about-img" />
+      <div class="about-img-wrap img-reveal-wrap" data-reveal="left">
+        <img src="images/studio-team.jpg" alt="La Castle Homes Architectural Studio" class="about-img img-animated" />
         <div class="gold-corner"></div>
-        <div class="experience-badge">
+        <div class="experience-badge" data-reveal="scale">
           <span class="badge-num">5+</span>
           <span class="badge-txt">Years of Architectural Distinction</span>
         </div>
       </div>
 
-      <div class="about-text-wrap">
+      <div class="about-text-wrap" data-reveal="right">
         <div class="label">ABOUT LA CASTLE HOMES</div>
         <h2 class="section-title">Where Vision Meets <em>Precision.</em></h2>
         <p class="section-desc">
@@ -75,21 +75,21 @@
         </p>
 
         <div class="about-features">
-          <div class="af-item">
+          <div class="af-item reveal delay-1">
             <span class="af-icon">◈</span>
             <div>
               <strong>Bespoke Architectural Design</strong>
               <p>Custom concepts tailored to your lifestyle and land orientation.</p>
             </div>
           </div>
-          <div class="af-item">
+          <div class="af-item reveal delay-2">
             <span class="af-icon">◈</span>
             <div>
               <strong>Rigorous Structural Engineering</strong>
               <p>Built with highest-grade materials adhering to international benchmarks.</p>
             </div>
           </div>
-          <div class="af-item">
+          <div class="af-item reveal delay-3">
             <span class="af-icon">◈</span>
             <div>
               <strong>Turnkey Project Delivery</strong>
@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <div class="about-action">
+        <div class="about-action reveal delay-4">
           <a routerLink="/about" class="btn-outline">LEARN MORE ABOUT US &nbsp;→</a>
         </div>
       </div>
@@ -109,16 +109,16 @@
 <!-- ══ CORE SERVICES PREVIEW ══ -->
 <section class="services-preview-section">
   <div class="container">
-    <div class="section-header-center">
+    <div class="section-header-center reveal">
       <div class="label label-center">WHAT WE DELIVER</div>
       <h2 class="section-title">Comprehensive <em>Expertise</em></h2>
       <p class="section-desc">End-to-end capabilities spanning initial concept through final structural handover.</p>
     </div>
 
     <div class="services-grid">
-      <div class="service-card">
-        <div class="svc-img-holder">
-          <img src="images/residential-1.jpg" alt="Residential Construction" />
+      <div class="service-card reveal delay-1">
+        <div class="svc-img-holder img-reveal-wrap">
+          <img src="images/residential-1.jpg" alt="Residential Construction" class="img-animated" />
         </div>
         <div class="svc-card-body">
           <span class="svc-tag">01 / RESIDENTIAL</span>
@@ -128,9 +128,9 @@
         </div>
       </div>
 
-      <div class="service-card">
-        <div class="svc-img-holder">
-          <img src="images/commercial-1.jpg" alt="Commercial Construction" />
+      <div class="service-card reveal delay-2">
+        <div class="svc-img-holder img-reveal-wrap">
+          <img src="images/commercial-1.jpg" alt="Commercial Construction" class="img-animated" />
         </div>
         <div class="svc-card-body">
           <span class="svc-tag">02 / COMMERCIAL</span>
@@ -140,9 +140,9 @@
         </div>
       </div>
 
-      <div class="service-card">
-        <div class="svc-img-holder">
-          <img src="images/renovation-1.jpg" alt="Renovation & Remodeling" />
+      <div class="service-card reveal delay-3">
+        <div class="svc-img-holder img-reveal-wrap">
+          <img src="images/renovation-1.jpg" alt="Renovation & Remodeling" class="img-animated" />
         </div>
         <div class="svc-card-body">
           <span class="svc-tag">03 / RENOVATION</span>
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div class="services-cta-wrap">
+    <div class="services-cta-wrap reveal delay-4">
       <a routerLink="/services" class="btn-gold">VIEW ALL 5 CORE SERVICES</a>
     </div>
   </div>
@@ -162,7 +162,7 @@
 <!-- ══ FEATURED PROJECTS ══ -->
 <section class="featured-projects-section">
   <div class="container">
-    <div class="featured-header">
+    <div class="featured-header reveal">
       <div>
         <div class="label">CURATED PORTFOLIO</div>
         <h2 class="section-title">Featured <em>Landmarks</em></h2>
@@ -171,10 +171,10 @@
     </div>
 
     <div class="projects-grid">
-      @for (project of featuredProjects; track project.title) {
-        <div class="project-card">
-          <div class="project-img-box">
-            <img [src]="project.image" [alt]="project.title" />
+      @for (project of featuredProjects; track project.title; let i = $index) {
+        <div class="project-card reveal" [class.delay-1]="i === 0" [class.delay-2]="i === 1" [class.delay-3]="i === 2">
+          <div class="project-img-box img-reveal-wrap">
+            <img [src]="project.image" [alt]="project.title" class="img-animated" />
             <div class="project-overlay">
               <span class="project-category">{{ project.category }}</span>
               <h3 class="project-title">{{ project.title }}</h3>
@@ -186,7 +186,7 @@
       }
     </div>
 
-    <div class="projects-mobile-btn hide-desktop">
+    <div class="projects-mobile-btn hide-desktop reveal">
       <a routerLink="/projects" class="btn-outline">VIEW ALL PROJECTS →</a>
     </div>
   </div>
@@ -195,15 +195,15 @@
 <!-- ══ TESTIMONIALS ══ -->
 <section class="testimonials-section">
   <div class="container">
-    <div class="section-header-center">
+    <div class="section-header-center reveal">
       <div class="label label-center">CLIENT VOICES</div>
       <h2 class="section-title">Enduring <em>Trust</em></h2>
       <p class="section-desc">What our esteemed clientele say about their journey with La Castle Homes.</p>
     </div>
 
     <div class="testimonials-grid">
-      @for (t of testimonials; track t.author) {
-        <div class="testi-card">
+      @for (t of testimonials; track t.author; let i = $index) {
+        <div class="testi-card reveal" [class.delay-1]="i === 0" [class.delay-2]="i === 1" [class.delay-3]="i === 2">
           <div class="testi-stars">★★★★★</div>
           <p class="testi-quote">"{{ t.quote }}"</p>
           <div class="testi-author-info">
